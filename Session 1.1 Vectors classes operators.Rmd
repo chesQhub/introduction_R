@@ -1,0 +1,149 @@
+---
+title: "Session 1.1: Vectors, classes and operators"
+output:
+    html_document:
+      theme: readable
+      highlight: tango
+      toc: TRUE
+      toc_depth: 3
+      toc_float:
+        smooth_scroll: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+R works with different types of data which could have different classes/types and structures. Class could be defined as the data itself (text, numbers, etc.) and the structure as how it is stored and its accessibility. The simplest data structure in R is a `vector`, with its respective class. More complex data is a combination of vectors, with same/different length and classes.
+
+To start your journey in R, let's introduce some vectors, their classes and how to handle them.
+
+## Vectors
+
+Maybe you have used Excel as a calculator. R can be used the same way. Try to sum the same two numbers of your choice. I will use 2:
+
+```{r two-plus-two, echo = TRUE}
+2 + 2
+```
+
+But... That's just a number, not a vector. It is not stored. To store data as an object, R uses the symbol `<-` to indicate what it will be stored in "X" object name. You could also use `=`, but I do not recommend it (the reason in a few minutes). We will save the previous number in its english name. After that, we will call the number. If R has stored it, R will print it:
+
+```{r storing_two, echo = TRUE}
+two <- 2
+two
+```
+
+Here we have your first vector with a length of 1. If you look at your Environment tab in RStudio, you should be able to see an object called `two` (or whatever you chose).
+
+If we want to store more values in the same vector, we need to write them inside `c()` and separate them with commas:
+
+```{r echo=TRUE}
+two_three_four <- c(2, 3, 4)
+two_three_four
+``` 
+
+Sometimes, vectors need to be empty or have missing data. Missing data in R is denoted as `NA`.
+
+```{r echo=TRUE}
+empty <- c(NA) # or just NA
+empty
+two_four <- c(2, NA, 4)
+two_four
+``` 
+
+As you can see,  vector `two_four` has a length of 3 but with an empty cell.
+
+## Classes of vectors
+
+### Numeric {.hideSectionHeader}
+
+As we commented, vectors will have different classes depending on the type of data contained. The vectors we used for now are **numeric**, they hold numeric information. Easy peasy.
+
+```{r, echo = TRUE}
+numbers <- c(1, 20, 300, 4000, 50000)
+numbers
+```
+
+### Character / Strings
+Second type: **characters**. Vectors holding inside them string of characters have this class. With them, you can "write" in R or store important messages. Important thing: character strings are between quotation marks ("") to distinguish one from another. 
+Example and question: Would these character vectors be the same? Think it and then call `foo` and `bar` to see it.
+
+```{r hello_world, echo = TRUE}
+foo <- c("Hello World")
+bar <- c("Hello", "World")
+```
+
+### Factors
+Third type: **factors**. These vectors contain qualitative information inside levels or tags, describing the variable. They are a bit tricky to handle sometimes. To create them, you need to write `factor()` and the vector as previously.
+Example: Look at the hair length of your classmates and create a factor vector named `hair` with their descriptions:
+
+```{r factor, echo = TRUE}
+hair <- factor(c("long", "long", "bald", "short", "whatever"))
+```
+
+This will create an object named `hair`. If we check what is inside, it will show the vector and the unique levels of the factor.
+
+```{r factor_show, echo = TRUE}
+hair
+```
+
+### Logical
+
+The last type: logical values. A Boolean form of data, which means they only can present two possible values: `TRUE` or `FALSE`. Useful for comparing data, selecting, etc. 
+Example and another solution of the exercise of `foo` and `bar`. If we compare the two vectors, a logical vector will be computed. To compare in R, we use `==`.
+
+```{r logical, echo = TRUE}
+foo == bar
+```
+
+As you can see, the output of the comparison is two values. Why? Hint: `foo`and `bar`have different lengths
+
+## Operators
+
+R includes arithmetic and logical operators. We have already used the two types and it is quite simple to understand. Operators could be applied to data stored in vectors (or the other objects) but with non-stored data too.
+
+### Arithmetic
+
+If you have used a calculator before, you will already know them. In the next chunk you have an example of all of them (mostly):
+
+```{r arithmetic_operators, echo = TRUE, collapse = TRUE}
+3 + 2   # addition
+3 - 2   # substraction
+3 * 2   # multiplication
+3 / 2   # division
+3 ^ 2   # exponential
+```
+
+There are two more arithmetic operators, but I don't think you will use them since they are quite specific: modulus and integer.
+
+Good thing, you can combine multiple arithmetic operators to create a new vector. Look at the example and try to replicate with your own ideas:
+
+```{r arithmetic_operators_exercice, eval = FALSE}
+weight <- c(60, 80, 75)
+height <- c(1.65, 1.92, 1.80)
+ratio <- weight / (height * 100) # We divide weight per height multiplied 100 times
+ratio
+```
+
+
+### Logical
+
+Those operators give you Boolean data as a result (remember the logical vectors). So, they compare. As previously, a chunk with the most interesting ones.
+
+```{r logical_operators, echo = TRUE, collapse= TRUE}
+x <- c(1, 2, 3)
+y <- c(1, 2, 6)
+
+3 <  2          # less than
+3 <= 2          # less than or equal to
+3 >  2          # more than
+3 >= 2          # more than or equal to
+3 == 2          # equal to
+x != y          # NOT equal to
+x > 2 | x < 3   # OR
+x > 1 & x < 3   # AND
+```
+
+In the previous case, the first comparisons compared two values and returned if the condition is proven. The last three have been applied to vectors. They indicate which values inside the vectors are `TRUE` or `FALSE` in a specific condition. 

@@ -1,0 +1,140 @@
+---
+title: "Types of data"
+output:
+    html_document:
+      theme: readable
+      highlight: tango
+      toc: TRUE
+      toc_depth: 3
+      toc_float:
+        smooth_scroll: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Data structure in R
+
+As mentioned, data needs to be stored before use. If data is small, like some vectors, maybe it is better to just write it. But imagine a vector with a length of 10000. Better store and keep using it in. Sometimes, a vector structure is not enough to store the data itself, classifications or relationships. The idea behind this new data structure is to combine vectors. We are going to see the most common types: matrices, data.frames and lists.
+
+## Matrices
+
+Vectors only have one dimension (length), whereas matrices are two dimensional. They are, at least, the combination of two vectors. They're commonly used as a way to store numeric data.
+
+To create a matrix, we can use the `matrix` function. It converts the data you want with the number of rows and columns. In the next code chunk, I want to create a matrix from a sequence of numbers from 1 to 10 `(1:10)` with 2 rows and 5 columns. Try to create your own matrix in interactive chunk.
+
+```{r matrix_first, echo = TRUE}
+matrix(1:10,    # data
+       nrow=2,  # number of rows
+       ncol=5)  # number of columns
+```
+
+Usually, we create matrices by combining vectors of the same length. You can combine them by column (`cbind`) or by row (`rbind`). Let's try to create a matrix combining two random vectors of your own, by row and by column. And compare them:
+
+```{r matrix_bind, echo= TRUE}
+vector1 <- c(1, 3, 5, 7)
+vector2 <- c(2, 4, 6, 8)
+
+matrix_column <- cbind(vector1,
+                       vector2)
+matrix_row <- rbind(vector1,
+                    vector2)
+
+matrix_column
+matrix_row
+```
+
+Matrices can be used as inputs to functions or with operators. But remember your classes of mathematics during your degree.
+
+Are the next operation possible?
+
+```{r matrix_bind_noexercise, results = FALSE}
+vector1 <- c(1, 3, 5, 7)
+vector2 <- c(2, 4, 6, 8)
+
+matrix_column <- cbind(vector1,
+                       vector2)
+matrix_row <- rbind(vector1,
+                    vector2)
+
+matrix_column
+matrix_row
+```
+
+```{r matrix_operation, echo = TRUE, eval = TRUE}
+# matrix_column * matrix_row
+
+# matrix_column + matrix_row
+```
+
+Bingo. Matrices have dimensions and need to be equal for some operations. To check the dimensions of a matrix, the function `dim` is useful:
+
+```{r matrix_dim, echo = TRUE}
+dim(matrix_column)
+dim(matrix_row)
+```
+
+There is another type of matrix, which would have more than two dimensions: arrays. Think of a cube structure storing data: each point (x, y, z) has a value. Not so common in R, so we won't see them but at least it is good if you know them since could be a powerful tool.
+
+## Data frame
+
+Another two-dimensional structure, and very similar to matrices. The major difference is the class of data inside. Matrices have always the same class of vectors (usually numeric). Data frames can hold numeric, character, factor or logical classes in each column. It is the most similar structure to Excel data, which you already know. Each row is an individual meanwhile its column values describe it. Here, columns have names and can be accessed with it.
+
+As before, we can create them with `data.frame`. Or a better way is to transform matrices to data.frames (and vice versa) with `as.data.frame` (or `as.matrix`). Dataframes can be combined to by row or column, like matrices.
+
+```{r dataframes, echo = TRUE}
+dataframe <- data.frame(vector1,   # data.frame combines vector by column
+                        vector2)
+
+dataframe
+
+dataframe <- as.data.frame(matrix_column,        # data to convert
+                           row.names = FALSE) # to erase row names
+dataframe
+```
+
+Dataframe columns can be accessed by their name, using the operator `$`. The next code chunk will show the names of columns with `col.names`and we will retrieve one of the columns:
+
+```{r dataframes_colnames}
+colnames(dataframe)
+dataframe$V1
+```
+
+We will know how to apply more of this, in a section called data management.
+
+Exercise: Try to create your own dataframe with, at least, 3 vectors: one numeric, one as a factor and the other of characters/string.
+
+```{r dataframes_exercise-hint, eval = FALSE}
+#This is an example
+factor_v <- factor(c("small", "large", "large"))
+numeric_v <- c(14, 122, 131)
+string_v <- c("hola", "miriam", "chesco")
+test <- data.frame(factor_v, numeric_v, string_v)
+test
+```
+
+## List
+
+Lists are one of the most complex structure in R: combinations of combinations. They can include vectors, matrices and data.frames inside them. Most of the packages work with this type of object. You can see them in the Environment tab, like all the other objects created and access the different parts in them.
+
+In the console, you can call each part of the list using [[]], but they're a bit tricky. Operators `@` and `$` work too, sometimes.
+
+To create them, we have the function `list`. Here is an example, but I think you will learn more of them as you use R in the next sessions.
+
+```{r list, echo = TRUE}
+factor_v <- factor(c("small", "large", "large"))
+
+numeric_v <- c(14, 122, 131)
+
+string_v <- c("hola", "miriam", "chesco")
+
+test <- data.frame(factor_v, numeric_v, string_v)
+
+
+test_list <- list(factor_v,
+                  numeric_v,
+                  string_v,
+                  test)
+test_list
+```
