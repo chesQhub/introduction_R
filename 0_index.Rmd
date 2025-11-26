@@ -1,0 +1,49 @@
+---
+title: "Introduction to R"
+author: "Chesco Montardit-Tarda"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Summary
+
+This introductory course is divided in 3 sessions, each one of 2 hours.
+The objective is to show how to use R/Rstudio. At the end of the course,
+you should be able to understand this software and use it to read,
+transform and visualize data. The basis of how to use R are presented
+here, but more extensives resources are available in internet and books.
+
+# Contents
+|Session|Topic|Time|
+|:----:|:----:|:----:|
+|Session 0|Setup & Installation|prior to course|
+|Session 1|Objects & classes|2 hours|
+|Session 2|Functions & Data transformation|2 hours|
+|Session 3|Data visualization & tidyverse|2hours|
+
+# Why R?
+R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry... The main reasons could be:
+-   Free software
+-   Open-source
+-   Multiplatform (Windows, Mac and Linux)
+-   A huge community of users
+-   Reproducibility
+
+
+# And RStudio? What is it?
+R can be a bit difficult to understand if you do not have any programming experience. 
+RStudio is a complementary software that allows an easier way to work with R. How? Integrating a graphical user interface in 4 panes:
+
+1)  Source editor. A pane where you can write, modify and save scripts or other text files. Think of it like a notepad.
+2)  Console. This pane is where R works: the command line. R will process the commands you write.
+3)  Environment / History. A pane with differents tabs. The environment tab is where you can see all data stored in your work session. The history tab register all commands used in the console pane.
+4)  Files, plots, packages and help. Another multitab pane whith a file manager (Files), a pane to see the plots you created (Plots), the installed packages (Packages) and the R documentation (Help)
+
+# Installing R and RStudio
+R has to be installed before Rstudio. If you're in Spain, go to this website: [https://cran.rediris.es/](https://cran.rediris.es/). Install the last version of R for your operating system (Windows, Linux, macOS...). When R is fully installed, you can download RStudio from this website: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/). Choose the download file necessary for your operating system, as you did for R. Easy peasy.
