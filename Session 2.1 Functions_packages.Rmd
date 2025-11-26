@@ -1,0 +1,151 @@
+---
+title: "Session 2.1: Functions and packages"
+output: 
+  html_document:
+    theme: readable
+    highlight: tango
+    fig_caption: yes
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+Until now, we have only used R as a calculator or to compare objects using logical operators to demonstrate simple conditions. If that's all R can do, we're doomed. Like Excel, R has some pre-installed functions or algorithms. These functions are "ways to analyze" data (input) to create a result (output). They make our work easier, but we could not use them... Remember: **Work smarter, not harder**. 
+
+Cooking example: You have meat but you need minced meat. You have two options: use a meat grinder for 10 minutes or spend an hour cutting it by hand. It's your choice.
+
+
+## Functions
+
+In R, a function is indicated by an identifier before (). You might remember `c()` and `factor()`. Yes, they are functions so you already know how to use them.
+Functions are made up of three parts: the body, the formals and the environment. The body is the code itself, the algorithm that will run. The formals are the arguments that controls the requirements of a function and how it can be modified. The environment specifies where the function is located in the program.
+
+First example: summation of some numbers with and without a function.
+
+```{r sum, echo = TRUE}
+# With function:
+myvector <- c(10, 30, 15) # create a vector
+sum(myvector)             # Summation
+
+# Rough arithmetics:
+10 + 30 + 15
+```
+
+Same result. Essentially, the `sum` function adds all the numbers in a sequence. You can do it too, but it would take longer with larger data.
+
+Now, calculate the mean. I can think of three ways to do it, but there could be more. Arithmetically, with a combination of arithmetic and simpler functions, or using the specific function `mean`:
+
+```{r mean, echo = TRUE}
+# Rough arithmetics:
+(10 + 30 + 15 ) / 3
+
+# Combination of functions:
+myvector <- c(10, 30, 15)         # create a vector
+sum(myvector) / length(myvector)  # sum vector and divide it by its length
+
+
+# With function:
+mean(myvector)                    # Calculate the mean
+```
+
+
+### Arguments
+
+The definition of what is going to be analyzed and how. When calling a function, the arguments are denoted as the identifier equals the possible value (identifier = value). You have already used the simplest argument: input. When you write `mean(myvector)`, you are telling `mean()` to analyze `myvector`. This function has another argument, which is very useful. It is called `na.rm`: this removes `NA` from the input and calculates the mean with the new length. If you try to perform arithmetic operations with an `NA` value, the results is always `NA` since it cannot be calculated.
+
+Here is an example calculating a mean that won't work:
+
+```{r mean_na_example, echo = TRUE, eval = TRUE}
+# Rough arithmetics:
+(10 + 30 + NA ) / 3
+
+# Combination of functions:
+myvector <- c(10, 30, NA)         # create a vector
+sum(myvector) / length(myvector)  # sum vector and divide it by its length
+
+
+# With function:
+mean(myvector)                    # Calculate the mean
+```
+
+Exercise: Try to calculate the mean with the three previous methods, but without `NA` as an output:
+
+```{r mean_na_exercise, echo = TRUE, eval = FALSE}
+# Rough arithmetic:
+
+# Combination of functions:
+myvector <- c(10, 30, NA)         # create a vector
+sum() / length()                  # sum vector and divide it by its length
+
+# With function:
+mean()     # Calculate the mean
+```
+
+
+### Help with functions
+
+The best way to know how a function works, its requirements and arguments is using the help in R. In RStudio, you can search for it in the tab Help at the bottom right square.
+There are three major ways to look for help in R. Using the function `help` and writing ? or ?? before the function you need to know. The difference between ? and ?? is if it will look for only the function called with this specific string or ALL strings with this word. This will open a text file with a description, usage, arguments, values, references, other related functions and examples.
+
+Run the three ways of calling help for `mean`. It should open new tabs in your browser with the information. If it is not working, try it in your personal RStudio. 
+
+```{r help-hint, eval = FALSE}
+help(mean)
+?mean
+??mean
+```
+
+### Creating new functions
+
+You can create personal functions of your own with `function`. The new function should be saved with an identifier, like vectors. After the `function`, round brackets `()` include the arguments. Next to it, curly brackets `{}` hold the code / algorithm of your function. Best way to understand it is with an example.
+We will create a function named `sum_and_mean`. It will calculate the sum and mean of a vector and print it with the function `print`:
+
+```{r sum_mean, echo = TRUE}
+sum_and_mean <- function(x) {
+  print(sum(x))
+  print(mean(x))
+}
+
+myvector <- c(10, 30, 15)
+
+sum_and_mean(myvector)
+```
+
+The argument `x` will be the input of the function inside itself. When replaced by our `myvector`, it is automatically converted and analyzed.
+
+Give it a try. Create a function which multiplies the value of `sum` per `n` value and applies it to `myvector`.
+
+```{r sum_multiplied-hint, eval = FALSE}
+sum_multiplied <- function(x, n) {
+  sum(x) * n
+}
+sum_multiplied(myvector, 5)
+```
+
+
+## Packages
+
+Packages are downloadable groups of pre-created functions. They are developed by R users and uploaded freely at CRAN. Most of the time, it is better to look for a package that makes easier your job than create it from scratch.
+Packages have to be downloaded and installed, with the `install.packages` function, with the identifier of the package between quotation marks. You only install a package once. At the right bottom square of your RStudio, there is a tab Packages where you can find all installed packages in your own R.
+
+Go to your RStudio. We will install `tidyverse`, a broadly used package with interesting capabilities. In fact, `tidyverse` is a group of packages. You will use it for sure. Run the next code and watch how it is installed. The console should print messages of the installation.
+
+```{r install_packages, echo = TRUE, eval = FALSE}
+install.packages("tidyverse")
+```
+
+
+After it is completed, you should be able to see tidyverse in the Packages tab.
+
+If a package is installed, it does not mean that we can use it directly. You need to "read" it first. This is used with the function 'library', without quotation marks. Think of packages as books of recipes. You bought a book because the title says "PIZZA" and you left it at the bookshelf (`install.packages`). Now, you need to take that book and open it (`library`) and use its recipes. 
+
+Give it a try using `library` with `tidyverse`.
+
+```{r library_packages, echo = TRUE , eval = FALSE}
+library(tidyverse)
+```
+

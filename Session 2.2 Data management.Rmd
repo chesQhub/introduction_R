@@ -1,0 +1,158 @@
+---
+title: "Session 2.2: Data management"
+output: 
+  html_document:
+    theme: readable
+    highlight: tango
+    fig_caption: yes
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data management
+
+We learnt the basic types of data structures and how to read them from files. Most of the time, data is not ready and transformations, extractions or subsets need to be performed. Normally, there are many ways to do the same procedure. The package `tidyverse` includes interesting functions with that purpuse.
+
+R has pre-installed data in a package named `datasets`, which we are going to use as an example. Reading the package makes available a data.frame called `iris`. The function `summary` gives us a glimpse of data and its structure.
+
+```{r load_iris, echo = TRUE}
+library(datasets)
+summary(iris)
+```
+
+So, `iris` is a data.frame with 4 numeric columns and a 5th column named Species, with 3 levels of factors.
+
+### Extracting/deleting positions, columns and rows.
+
+This could be the section with more options. 
+
+As we saw yesterday, data.frames are very similar to matrices and both are combinations of vectors. Vector cells (and the values inside each one) are indicated by a position in its length (dimension). Square brackets `[]` indicate the dimension of an object: remember the output of `dim()`. For vectors, the dimension is `length()`.
+
+```{r dimension, echo = TRUE}
+myvector <- c(10, 30 ,15)
+length(myvector)         # length of a vector
+
+dim(iris)           # dimension of a matrix/dataframe (row vs column)
+```
+
+For example, if we want to watch the value at any position of a vector, we can call it by putting the position inside square brackets `[]` after the name of the object:
+
+```{r myvector, echo = TRUE}
+myvector[2]
+```
+
+Data.frames and matrices have rows and columns, so two dimensions. In this case, the comma inside `[]` separates rows vs columns. The `head` function only shows the first 6 values by default, you can change it with argument `n` (look at the help if you need more information).
+
+```{r iris_position, echo = TRUE}
+iris[1, ]          # Show first row
+head(iris[, 1])    # Show first column
+iris[1, 1]         # Show value at row 1, column 1
+```
+
+For data.frames, you can select columns using `$` and the name of the column. In this case, it is the same as `iris[, 1]`.
+
+```{r iris_column, echo = TRUE}
+head(iris$Sepal.Length) # Show column Sepal.Length
+```
+
+
+This method allows us to use negative values indicating deletion of the position/row/column. Save it in a new object `iris_del` and visually check differences with `summary`.
+
+```{r iris_deletion, echo = TRUE}
+iris_del <- iris[, -1]    # Delete first column and save it
+summary(iris)
+summary(iris_del)
+```
+
+Other ways to delete columns:
+
+```{r example_del, echo = TRUE, eval= FALSE}
+iris_del$Width.Sepal <- NULL
+iris_del <- iris_del[, ]
+```
+
+### Modify names or values
+
+Now, we know how to handle data with positions and select columns by name.. But what if you do not like your column names? Just change them. R includes a function called `colnames` which returns them. We can use them to modify all names or a specific one with '[]'.
+The same can be done for rows, but it is not important.
+
+```{r colnames, echo = TRUE}
+colnames(iris_del)                        # Show column names
+
+colnames(iris_del)[1] <- "Width.Sepal"    # Modify 1st column name
+                                          # Look at the previous result (it is a vector, 1 dim)
+
+colnames(iris_del)                        # Show new column names
+
+```
+
+
+So you have seen how to modify the value of a vector. The same can be done with values of row*column in a dataframe. For example, we will introduce one missing data:
+
+
+```{r introduce_NA, echo = TRUE}
+iris_del[1, 1] <- NA
+head(iris_del)
+```
+
+### Handling missing data
+
+Firstly, you want to know if there is any missing data in your data.frame. Sometimes, missing data can be produced by a bad reading of data. The function `is.na` checks which cells are missing data, and returns a logical vector (TRUE/FALSE). If we summarise the result in our deleted iris data...
+
+```{r NA, echo = TRUE}
+summary(is.na(iris_del))
+```
+
+All are FALSE except a value in Width.Sepal, introduced before. We can delete rows with missing data using `na.omit` or check which are complete with `complete.cases`
+
+```{r omit_complete, echo = TRUE}
+complete.cases(iris_del)
+
+head(na.omit(iris_del))       # Show first rows deleting incomplete rows
+```
+
+Row 1 has been deleted. Sometimes, you can just use arguments in specific functions to remove missing data, as `na.rm` from `mean`, as we saw yesterday.
+
+
+### Subsetting data.frames
+
+We can use variable names and logical vectors inside dataframes to select them, using the positions. For example, we want to create a new data.frame only with the setosa species in `iris`:
+
+```{r subset_setosa, echo = TRUE}
+setosa <- iris[iris$Species == "setosa", ]   # Choose rows with column Species equal to "setosa"
+summary(setosa)
+```
+
+
+At the same time, we can combine operators or columns to select with multiple options:
+
+
+```{r more_subset, echo = TRUE}
+width_2species <- iris[iris$Species == c("versicolor", "setosa") & iris$Sepal.Width > 2, ]     # Select setosa AND versicolor with
+                                                                                               # sepal width more than...
+summary(width_2species)
+```
+
+## Function subset
+
+The name of the function tells you what does: subsetting data. Selecting variables and observations is easier but sometimes does weird things. I recommend you to use the previous examples or tidyverse.
+
+
+```{r subset_function, echo = TRUE}
+virginica <- subset(iris, Species == "virginica" & Petal.Length < 5)   # Select virginica with Petal.Length less than 5
+summary(virginica)
+```
+
+
+## A lot more to do
+
+For example, `tidyverse` package does the same, but stylishly. R can be a bit rough, as you have seen. There are a lot of packages related to data management, such as `reshape` which transforms data from long format to wide format or vice versa, with the function `melt`. Good for you, `tidyverse`do the same and easily.
+
+
+Best learning is practice.
+
