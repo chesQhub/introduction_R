@@ -39,6 +39,7 @@ here, but more extensives resources are available in internet and books.
 
 # Why R?
 R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry... The main reasons could be:
+
 1)   Free software
 2)  Open-source
 3)  Multi-platform (Windows, Mac and Linux)
