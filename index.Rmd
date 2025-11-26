@@ -1,10 +1,13 @@
 ---
 title: "Introduction to R"
-author: "Chesco Montardit-Tarda"
-output: html_document
-editor_options: 
-  markdown: 
-    wrap: 72
+output:
+    html_document:
+      theme: readable
+      highlight: tango
+      toc: TRUE
+      toc_depth: 3
+      toc_float:
+        smooth_scroll: TRUE
 ---
 
 ```{r setup, include=FALSE}
@@ -23,17 +26,24 @@ here, but more extensives resources are available in internet and books.
 |Session|Topic|Time|
 |:----:|:----:|:----:|
 |Session 0|Setup & Installation|prior to course|
-|Session 1|Objects & classes|2 hours|
+|Session 1|Object oriented programming|2 hours|
+|Session 1.1|[Vectors, classes and operators](https://chesqhub.github.io/introduction_R/Session-1.1-Vectors-classes-operators.html)|1 hour|
+|Session 1.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-1.2.-Data-structures.html)|1 hour|
 |Session 2|Functions & Data transformation|2 hours|
+|Session 2.1|[Functions and packages](https://chesqhub.github.io/introduction_R/Session-2.1-Functions_packages.html)|1 hour|
+|Session 2.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|1 hour|
 |Session 3|Data visualization & tidyverse|2hours|
+|Session 3.1|Data visualization|2hours|
+|Session 3.2|Tidyverse|2hours|
+
 
 # Why R?
 R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry... The main reasons could be:
--   Free software
--   Open-source
--   Multiplatform (Windows, Mac and Linux)
--   A huge community of users
--   Reproducibility
+1)   Free software
+2)  Open-source
+3)  Multi-platform (Windows, Mac and Linux)
+4)  A huge community of users
+5)  Reproducibility
 
 
 # And RStudio? What is it?
