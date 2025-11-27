@@ -16,31 +16,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Summary
 
-This introductory course is divided in 3 sessions, each one of 2 hours.
-The objective is to show how to use R/Rstudio. At the end of the course,
-you should be able to understand this software and use it to read,
-transform and visualize data. The basis of how to use R are presented
-here, but more extensives resources are available in internet and books.
+This introductory course is divided into three sessions, each one of two hours.
+The objective is to show how to use R/RStudio. At the end of the course, you should be able to understand this software and use it to read, transform and visualize data. The basics of how to use R are presented
+here, but more extensive resources are available on the internet and in books.
 
 # Contents
 |Session|Topic|Time|
 |:----:|:----:|:----:|
 |Session 0|Setup & Installation|prior to course|
 |Session 1|Object oriented programming|2 hours|
-|Session 1.1|[Vectors, classes and operators](https://chesqhub.github.io/introduction_R/Session-1.1-Vectors-classes-operators.html)|1 hour|
-|Session 1.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-1.2.-Data-structures.html)|1 hour|
+|Session 1.1|[Vectors, classes and operators](https://chesqhub.github.io/introduction_R/Session-1.1-Vectors-classes-operators.html)|1/2|
+|Session 1.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-1.2.-Data-structures.html)|2/2|
 |Session 2|Functions & Data transformation|2 hours|
-|Session 2.1|[Functions and packages](https://chesqhub.github.io/introduction_R/Session-2.1-Functions_packages.html)|1 hour|
-|Session 2.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|1 hour|
+|Session 2.1|[Functions and packages](https://chesqhub.github.io/introduction_R/Session-2.1-Functions_packages.html)|1/2|
+|Session 2.2|[Data management](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|2/2|
 |Session 3|Data visualization & tidyverse|2hours|
-|Session 3.1|Data visualization|2hours|
-|Session 3.2|Tidyverse|2hours|
+|Session 3.1|Data visualization|1/2|
+|Session 3.2|Tidyverse|2/2|
 
 
 # Why R?
-R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry... The main reasons could be:
+R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry,... The main reasons could be:
 
-1)   Free software
+1)  Free software
 2)  Open-source
 3)  Multi-platform (Windows, Mac and Linux)
 4)  A huge community of users
@@ -53,8 +51,8 @@ RStudio is a complementary software that allows an easier way to work with R. Ho
 
 1)  Source editor. A pane where you can write, modify and save scripts or other text files. Think of it like a notepad.
 2)  Console. This pane is where R works: the command line. R will process the commands you write.
-3)  Environment / History. A pane with differents tabs. The environment tab is where you can see all data stored in your work session. The history tab register all commands used in the console pane.
-4)  Files, plots, packages and help. Another multitab pane whith a file manager (Files), a pane to see the plots you created (Plots), the installed packages (Packages) and the R documentation (Help)
+3)  Environment / History. A pane with different tabs. The Environment tab is where you can see all data stored in your work session. The history tab registers all commands used in the console pane.
+4)  Files, plots, packages and help. Another multitask pane with a file manager (Files), a pane to see the plots you created (Plots), the installed packages (Packages) and the R documentation (Help)
 
 # Installing R and RStudio
-R has to be installed before Rstudio. If you're in Spain, go to this website: [https://cran.rediris.es/](https://cran.rediris.es/). Install the last version of R for your operating system (Windows, Linux, macOS...). When R is fully installed, you can download RStudio from this website: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/). Choose the download file necessary for your operating system, as you did for R. Easy peasy.
+R has to be installed before RStudio. If you're in Spain, go to this website: [https://cran.rediris.es/](https://cran.rediris.es/). Install the last version of R for your operating system (Windows, Linux, macOS...). When R is fully installed, you can download RStudio from this website: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/). Choose the download file necessary for your operating system, as you did for R. Easy peasy.
