@@ -24,15 +24,13 @@ here, but more extensive resources are available on the internet and in books.
 |Session|Topic|Time|
 |:----:|:----:|:----:|
 |Session 0|Setup & Installation|prior to course|
-|Session 1|Object oriented programming|2 hours|
 |Session 1.1|[Vectors, classes and operators](https://chesqhub.github.io/introduction_R/Session-1.1-Vectors-classes-operators.html)|1/2|
 |Session 1.2|[Data structures](https://chesqhub.github.io/introduction_R/Session-1.2.-Data-structures.html)|2/2|
-|Session 2|Functions & Data transformation|2 hours|
 |Session 2.1|[Functions and packages](https://chesqhub.github.io/introduction_R/Session-2.1-Functions_packages.html)|1/2|
-|Session 2.2|[Data management](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|2/2|
-|Session 3|Data visualization & tidyverse|2hours|
-|Session 3.1|Data visualization|1/2|
-|Session 3.2|Tidyverse|2/2|
+|Session 2.2|[Import and export data](https://chesqhub.github.io/introduction_R/Session2-Import-and-export-data.html)|2/3|
+|Session 2.3|[Data management](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|3/3|
+|Session 3.1|[Tidyverse](https://chesqhub.github.io/introduction_R/Session3-Tidyverse.html)|1/2|
+|Session 3.2|[Data visualization](https://chesqhub.github.io/introduction_R/Session3-Data-visualization.html)|2/2|
 
 
 # Why R?
