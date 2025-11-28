@@ -31,7 +31,7 @@ here, but more extensive resources are available on the internet and in books.
 |Session 2.3|[Data management](https://chesqhub.github.io/introduction_R/Session-2.2-Data-management.html)|3/3|
 |Session 3.1|[Tidyverse](https://chesqhub.github.io/introduction_R/Session3-Tidyverse.html)|1/2|
 |Session 3.2|[Data visualization](https://chesqhub.github.io/introduction_R/Session3-Data-visualization.html)|2/2|
-
+|Practical case|[Download data and we will work together](https://github.com/chesQhub/introduction_R/tree/main/Practical_case)
 
 # Why R?
 R is a widely used statistical program in science: biology, mathematics, social sciences, chemistry,... The main reasons could be:
